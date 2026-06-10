@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zsul Data Intelligence</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="navbar">
+    <div class="container nav-content">
+      <div class="logo">Zsul<span>.</span></div>
+      <nav>
+        <a href="#servicios">Servicios</a>
+        <a href="#proceso">Proceso</a>
+        <a href="#planes">Planes</a>
+        <a href="#contacto" class="nav-cta">Diagnóstico gratis</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Limpieza de datos · Dashboards · Mantenimiento</p>
+          <h1>Convierte datos desordenados en decisiones claras.</h1>
+          <p class="hero-text">
+            En Zsul limpiamos, organizamos y transformamos tus bases de datos en dashboards ejecutivos,
+            reportes automáticos e indicadores confiables para que tu empresa deje de decidir con información incompleta.
+          </p>
+          <div class="hero-actions">
+            <a href="#contacto" class="btn primary">Agenda un diagnóstico gratuito</a>
+            <a href="#servicios" class="btn secondary">Ver servicios</a>
+          </div>
+          <div class="trust-row">
+            <span>Menos reportes manuales</span>
+            <span>Datos más confiables</span>
+            <span>KPIs claros</span>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <div class="card-header">
+            <span></span><span></span><span></span>
+          </div>
+          <div class="dashboard-preview">
+            <div class="metric-card">
+              <p>Registros depurados</p>
+              <strong>24,830</strong>
+              <small>+38% calidad de datos</small>
+            </div>
+            <div class="metric-card">
+              <p>Reportes manuales</p>
+              <strong>-72%</strong>
+              <small>menos tiempo operativo</small>
+            </div>
+            <div class="chart-card">
+              <div class="bar b1"></div>
+              <div class="bar b2"></div>
+              <div class="bar b3"></div>
+              <div class="bar b4"></div>
+              <div class="bar b5"></div>
+            </div>
+            <div class="status-list">
+              <div><span class="dot ok"></span>Duplicados eliminados</div>
+              <div><span class="dot ok"></span>Formatos homologados</div>
+              <div><span class="dot warn"></span>Dashboard en mantenimiento</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="problem">
+      <div class="container split">
+        <div>
+          <p class="eyebrow">El problema</p>
+          <h2>Tu empresa tiene datos, pero no necesariamente información útil.</h2>
+        </div>
+        <p>
+          Bases en Excel desordenadas, clientes duplicados, reportes que se hacen a mano, indicadores que nadie actualiza
+          y dashboards que dejaron de funcionar. Cuando los datos no son confiables, las decisiones se vuelven lentas,
+          confusas y costosas.
+        </p>
+      </div>
+    </section>
+
+    <section id="servicios" class="services">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Servicios</p>
+          <h2>Ordenamos tus datos y los convertimos en herramientas de decisión.</h2>
+        </div>
+        <div class="service-grid">
+          <article class="service-card">
+            <h3>Limpieza de bases de datos</h3>
+            <p>Depuramos, estandarizamos y organizamos tu información para que sea confiable y usable.</p>
+            <ul>
+              <li>Eliminación de duplicados</li>
+              <li>Corrección de errores</li>
+              <li>Homologación de formatos</li>
+              <li>Validación de campos</li>
+            </ul>
+          </article>
+          <article class="service-card">
+            <h3>Dashboards ejecutivos</h3>
+            <p>Creamos tableros visuales para monitorear ventas, clientes, operaciones o finanzas.</p>
+            <ul>
+              <li>Power BI, Looker Studio o Excel</li>
+              <li>KPIs claros</li>
+              <li>Filtros interactivos</li>
+              <li>Reportes para dirección</li>
+            </ul>
+          </article>
+          <article class="service-card">
+            <h3>Automatización de reportes</h3>
+            <p>Reducimos el trabajo manual y consolidamos información repetitiva.</p>
+            <ul>
+              <li>Reportes automáticos</li>
+              <li>Plantillas inteligentes</li>
+              <li>Consolidación de archivos</li>
+              <li>Actualizaciones periódicas</li>
+            </ul>
+          </article>
+          <article class="service-card featured">
+            <h3>Mantenimiento mensual</h3>
+            <p>Nos aseguramos de que tus dashboards sigan funcionando y evolucionen con tu negocio.</p>
+            <ul>
+              <li>Corrección de errores</li>
+              <li>Nuevas métricas</li>
+              <li>Ajustes visuales</li>
+              <li>Soporte mensual</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="audience">
+      <div class="container">
+        <div class="section-heading center">
+          <p class="eyebrow">Para quién es</p>
+          <h2>Ideal para empresas que ya tienen datos, pero no los están aprovechando.</h2>
+        </div>
+        <div class="pill-grid">
+          <span>Empresas pequeñas y medianas</span>
+          <span>Distribuidores</span>
+          <span>Logística</span>
+          <span>Inmobiliarias</span>
+          <span>Despachos</span>
+          <span>Ventas</span>
+          <span>Operaciones</span>
+          <span>Finanzas</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="proceso" class="process">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Proceso</p>
+          <h2>Así trabajamos contigo.</h2>
+        </div>
+        <div class="steps">
+          <div class="step"><span>01</span><h3>Diagnóstico</h3><p>Revisamos tus bases, reportes actuales y necesidades principales.</p></div>
+          <div class="step"><span>02</span><h3>Limpieza</h3><p>Corregimos errores, duplicados y formatos inconsistentes.</p></div>
+          <div class="step"><span>03</span><h3>Construcción</h3><p>Creamos dashboards, indicadores y reportes ejecutivos.</p></div>
+          <div class="step"><span>04</span><h3>Mantenimiento</h3><p>Damos soporte, ajustes y mejoras mensuales cuando lo necesites.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="planes" class="pricing">
+      <div class="container">
+        <div class="section-heading center">
+          <p class="eyebrow">Planes</p>
+          <h2>Empieza con un proyecto puntual o con soporte mensual.</h2>
+        </div>
+        <div class="price-grid">
+          <article class="price-card">
+            <h3>Diagnóstico inicial</h3>
+            <p>Revisión de tus bases y reportes actuales.</p>
+            <strong>$0</strong>
+            <span>Sesión inicial</span>
+          </article>
+          <article class="price-card">
+            <h3>Proyecto de limpieza</h3>
+            <p>Depuración y estructura de bases desordenadas.</p>
+            <strong>Desde $4,500</strong>
+            <span>MXN</span>
+          </article>
+          <article class="price-card popular">
+            <div class="badge">Más vendido</div>
+            <h3>Dashboard ejecutivo</h3>
+            <p>Tablero con indicadores clave para tu negocio.</p>
+            <strong>Desde $8,000</strong>
+            <span>MXN</span>
+          </article>
+          <article class="price-card">
+            <h3>Mantenimiento mensual</h3>
+            <p>Soporte, ajustes y actualización de dashboards.</p>
+            <strong>Desde $5,000</strong>
+            <span>MXN / mes</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto" class="cta">
+      <div class="container cta-box">
+        <div>
+          <p class="eyebrow">Agenda tu diagnóstico</p>
+          <h2>Deja de tomar decisiones con datos incompletos.</h2>
+          <p>Cuéntanos qué reportes usas hoy y te decimos cómo podemos limpiarlos, automatizarlos o convertirlos en dashboards.</p>
+        </div>
+        <form class="contact-form">
+          <input type="text" placeholder="Nombre" required>
+          <input type="email" placeholder="Correo" required>
+          <input type="text" placeholder="Empresa">
+          <textarea placeholder="¿Qué necesitas mejorar de tus datos o reportes?"></textarea>
+          <button type="submit">Enviar solicitud</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-content">
+      <div class="logo">Zsul<span>.</span></div>
+      <p>Data Intelligence para empresas que quieren decidir con claridad.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
