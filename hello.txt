@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Zsul Data Intelligence</title>
+  <title>LZsul Data Intelligence</title>
   <link rel="stylesheet" href="styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,7 +12,7 @@
 <body>
   <header class="navbar">
     <div class="container nav-content">
-      <div class="logo">Zsul<span>.</span></div>
+      <div class="logo">LZsul<span>.</span></div>
       <nav>
         <a href="#servicios">Servicios</a>
         <a href="#proceso">Proceso</a>
@@ -29,7 +29,7 @@
           <p class="eyebrow">Limpieza de datos · Dashboards · Mantenimiento</p>
           <h1>Convierte datos desordenados en decisiones claras.</h1>
           <p class="hero-text">
-            En Zsul limpiamos, organizamos y transformamos tus bases de datos en dashboards ejecutivos,
+            En LZsul limpiamos, organizamos y transformamos tus bases de datos en dashboards ejecutivos,
             reportes automáticos e indicadores confiables para que tu empresa deje de decidir con información incompleta.
           </p>
           <div class="hero-actions">
@@ -230,7 +230,7 @@
 
   <footer>
     <div class="container footer-content">
-      <div class="logo">Zsul<span>.</span></div>
+      <div class="logo">LZsul<span>.</span></div>
       <p>Data Intelligence para empresas que quieren decidir con claridad.</p>
     </div>
   </footer>
