@@ -57,7 +57,7 @@ document.querySelectorAll('.contact-form').forEach(function (form) {
     }
 
     if (CONTACT_EMAIL) {
-      const subject = encodeURIComponent(isEnglish ? 'Zsul diagnostic request' : 'Solicitud de diagnóstico Zsul');
+      const subject = encodeURIComponent(isEnglish ? 'LZsul diagnostic request' : 'Solicitud de diagnóstico LZsul');
       window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${encodeURIComponent(message)}`;
       return;
     }
@@ -65,8 +65,8 @@ document.querySelectorAll('.contact-form').forEach(function (form) {
     const copied = await copyMessage(message);
     alert(isEnglish
       ? (copied
-        ? 'Your request was prepared and copied. The real Zsul WhatsApp or email still needs to be connected.'
-        : 'Your request was prepared. The real Zsul WhatsApp or email still needs to be connected.')
+        ? 'Your request was prepared and copied. The real LZsul WhatsApp or email still needs to be connected.'
+        : 'Your request was prepared. The real LZsul WhatsApp or email still needs to be connected.')
       : (copied
       ? 'Tu solicitud quedó preparada y copiada. Falta conectar el WhatsApp o correo real de Zsul.'
       : 'Tu solicitud quedó preparada. Falta conectar el WhatsApp o correo real de Zsul.'));
