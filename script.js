@@ -1,5 +1,5 @@
 const CONTACT_WHATSAPP_NUMBER = '+1 3392351840';
-const CONTACT_EMAIL = 'contacto@LZsul.com';
+const CONTACT_EMAIL = 'contacto@lzsul.com';
 
 function buildWhatsappUrl(message) {
   const phone = CONTACT_WHATSAPP_NUMBER.replace(/\D/g, '');
@@ -66,14 +66,26 @@ document.querySelectorAll('.contact-form').forEach(function (form) {
     const isEnglish = document.documentElement.lang === 'en';
     const message = buildContactMessage(form);
 
-    if (CONTACT_WHATSAPP_NUMBER) {
-      window.open(buildWhatsappUrl(message), '_blank');
-      return;
-    }
-
     if (CONTACT_EMAIL) {
       const subject = isEnglish ? 'LZsul diagnostic request' : 'Solicitud de diagnóstico LZsul';
       window.location.href = buildEmailUrl(subject, message);
+
+      if (CONTACT_WHATSAPP_NUMBER) {
+        setTimeout(function () {
+          const wantsWhatsapp = window.confirm(isEnglish
+            ? 'Your email was prepared for LZsul. Would you also like to contact us on WhatsApp?'
+            : 'Se preparo el correo para LZsul. Tambien quieres comunicarte por WhatsApp?');
+
+          if (wantsWhatsapp) {
+            window.open(buildWhatsappUrl(message), '_blank');
+          }
+        }, 700);
+      }
+      return;
+    }
+
+    if (CONTACT_WHATSAPP_NUMBER) {
+      window.open(buildWhatsappUrl(message), '_blank');
       return;
     }
 
@@ -106,7 +118,7 @@ document.querySelectorAll('.cta-box > div:first-child').forEach(function (conten
   whatsappLink.textContent = 'WhatsApp: +1 339 235 1840';
 
   emailLink.href = buildEmailUrl(subject, message);
-  emailLink.textContent = 'contacto@LZsul.com';
+  emailLink.textContent = 'contacto@lzsul.com';
 
   links.className = 'direct-contact';
   links.append(whatsappLink, emailLink);
