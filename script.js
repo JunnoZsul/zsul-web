@@ -1,5 +1,21 @@
-const CONTACT_WHATSAPP_NUMBER = '';
-const CONTACT_EMAIL = '';
+const CONTACT_WHATSAPP_NUMBER = '+1 3392351840';
+const CONTACT_EMAIL = 'contacto@LZsul.com';
+
+function buildWhatsappUrl(message) {
+  const phone = CONTACT_WHATSAPP_NUMBER.replace(/\D/g, '');
+  const text = message ? `?text=${encodeURIComponent(message)}` : '';
+
+  return `https://wa.me/${phone}${text}`;
+}
+
+function buildEmailUrl(subject, body) {
+  const query = new URLSearchParams({
+    subject,
+    body
+  }).toString();
+
+  return `mailto:${CONTACT_EMAIL}?${query}`;
+}
 
 function buildContactMessage(form) {
   const isEnglish = document.documentElement.lang === 'en';
@@ -51,14 +67,13 @@ document.querySelectorAll('.contact-form').forEach(function (form) {
     const message = buildContactMessage(form);
 
     if (CONTACT_WHATSAPP_NUMBER) {
-      const phone = CONTACT_WHATSAPP_NUMBER.replace(/\D/g, '');
-      window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, '_blank');
+      window.open(buildWhatsappUrl(message), '_blank');
       return;
     }
 
     if (CONTACT_EMAIL) {
-      const subject = encodeURIComponent(isEnglish ? 'LZsul diagnostic request' : 'Solicitud de diagnóstico LZsul');
-      window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${encodeURIComponent(message)}`;
+      const subject = isEnglish ? 'LZsul diagnostic request' : 'Solicitud de diagnóstico LZsul';
+      window.location.href = buildEmailUrl(subject, message);
       return;
     }
 
@@ -68,7 +83,33 @@ document.querySelectorAll('.contact-form').forEach(function (form) {
         ? 'Your request was prepared and copied. The real LZsul WhatsApp or email still needs to be connected.'
         : 'Your request was prepared. The real LZsul WhatsApp or email still needs to be connected.')
       : (copied
-      ? 'Tu solicitud quedó preparada y copiada. Falta conectar el WhatsApp o correo real de Zsul.'
-      : 'Tu solicitud quedó preparada. Falta conectar el WhatsApp o correo real de Zsul.'));
+      ? 'Tu solicitud quedó preparada y copiada. Falta conectar el WhatsApp o correo real de LZsul.'
+      : 'Tu solicitud quedó preparada. Falta conectar el WhatsApp o correo real de LZsul.'));
   });
+});
+
+document.querySelectorAll('.cta-box > div:first-child').forEach(function (content) {
+  if (content.querySelector('.direct-contact')) return;
+
+  const isEnglish = document.documentElement.lang === 'en';
+  const message = isEnglish
+    ? 'Hello, I would like information about LZsul services.'
+    : 'Hola, quiero informacion sobre los servicios de LZsul.';
+  const subject = isEnglish ? 'Information request - LZsul' : 'Solicitud de informacion - LZsul';
+  const links = document.createElement('div');
+  const whatsappLink = document.createElement('a');
+  const emailLink = document.createElement('a');
+
+  whatsappLink.href = buildWhatsappUrl(message);
+  whatsappLink.target = '_blank';
+  whatsappLink.rel = 'noopener';
+  whatsappLink.textContent = 'WhatsApp: +1 339 235 1840';
+
+  emailLink.href = buildEmailUrl(subject, message);
+  emailLink.textContent = 'contacto@LZsul.com';
+
+  links.className = 'direct-contact';
+  links.append(whatsappLink, emailLink);
+
+  content.appendChild(links);
 });
