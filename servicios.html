@@ -4,19 +4,400 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Servicios | LZsul Data Intelligence</title>
-    <link rel="stylesheet" href="styles.css?v=9" />
+    <style>:root {
+  --bg: #07111f;
+  --bg-soft: #0d1b2f;
+  --card: #10223a;
+  --text: #eef5ff;
+  --muted: #9fb0c7;
+  --accent: #54e6c1;
+  --accent-2: #6aa8ff;
+  --line: rgba(255,255,255,.1);
+  --white: #ffffff;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+a { color: inherit; text-decoration: none; }
+.container { width: min(1120px, 92%); margin: 0 auto; }
+
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(7,17,31,.82);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--line);
+}
+.nav-content { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 18px 0; }
+.logo { font-weight: 800; font-size: 1.45rem; letter-spacing: -.04em; }
+.logo span { color: var(--accent); }
+nav { display: flex; gap: 26px; align-items: center; color: var(--muted); font-size: .95rem; margin-left: auto; }
+nav a.active { color: var(--accent); font-weight: 800; }
+.nav-cta { color: var(--bg); background: var(--accent); padding: 10px 16px; border-radius: 999px; font-weight: 700; }
+.language-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 4px;
+  background: rgba(255,255,255,.04);
+}
+.language-switch a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 34px;
+  min-height: 30px;
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: .78rem;
+  font-weight: 800;
+}
+.language-switch a.active {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+.hero {
+  min-height: min(690px, calc(100svh - 82px));
+  padding: clamp(72px, 9vh, 108px) 0 clamp(58px, 8vh, 92px);
+  display: flex;
+  align-items: center;
+  background:
+    linear-gradient(90deg, rgba(7,17,31,.98) 0%, rgba(7,17,31,.88) 34%, rgba(7,17,31,.34) 72%, rgba(7,17,31,.12) 100%),
+    linear-gradient(180deg, rgba(7,17,31,.18), rgba(7,17,31,.62)),
+    radial-gradient(ellipse at 85% 30%, rgba(106,168,255,.22), transparent 65%);
+  background-size: cover;
+  background-position: center right;
+}
+.hero-grid { display: grid; grid-template-columns: minmax(0, 680px); gap: 0; align-items: center; }
+.hero-copy { max-width: 680px; }
+.eyebrow { color: var(--accent); font-weight: 800; text-transform: uppercase; font-size: .78rem; letter-spacing: .14em; margin-bottom: 14px; }
+h1 { font-size: clamp(2.6rem, 6vw, 5rem); line-height: .98; letter-spacing: -.07em; max-width: 780px; }
+h2 { font-size: clamp(2rem, 4vw, 3.2rem); line-height: 1.05; letter-spacing: -.055em; }
+h3 { font-size: 1.25rem; letter-spacing: -.03em; }
+.hero-text { color: #c5d6ee; font-size: 1.13rem; margin: 26px 0 34px; max-width: 640px; }
+.hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+.btn { padding: 14px 20px; border-radius: 14px; font-weight: 800; display: inline-flex; }
+.primary { background: var(--accent); color: #061018; }
+.secondary { border: 1px solid var(--line); color: var(--text); background: rgba(255,255,255,.04); }
+.trust-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; color: var(--muted); font-size: .9rem; }
+.trust-row span { border: 1px solid rgba(255,255,255,.16); border-radius: 999px; padding: 8px 12px; background: rgba(7,17,31,.54); backdrop-filter: blur(10px); }
+
+section { padding: 84px 0; }
+.split { display: grid; grid-template-columns: .9fr 1.1fr; gap: 60px; align-items: start; }
+.split p:last-child { color: var(--muted); font-size: 1.1rem; }
+.problem, .process, .home-summary { background: var(--bg-soft); }
+.data-safety { background: var(--bg); }
+.section-heading { max-width: 760px; margin-bottom: 36px; }
+.center { text-align: center; margin-left: auto; margin-right: auto; }
+.service-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.service-card, .step, .price-card { background: var(--card); border: 1px solid var(--line); border-radius: 24px; padding: 24px; }
+.service-card.featured, .price-card.popular { border-color: rgba(84,230,193,.62); box-shadow: 0 0 0 1px rgba(84,230,193,.18); }
+.service-card p, .step p, .price-card p { color: var(--muted); margin: 12px 0; }
+ul { list-style: none; display: grid; gap: 8px; margin-top: 18px; color: var(--muted); }
+li::before { content: '✓'; color: var(--accent); margin-right: 8px; font-weight: 800; }
+.pill-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.pill-grid span { background: rgba(255,255,255,.06); border: 1px solid var(--line); border-radius: 999px; padding: 12px 16px; color: var(--muted); }
+.steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.step span { color: var(--accent); font-weight: 800; }
+.price-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 18px; }
+.price-card { position: relative; }
+.price-card strong { display: block; font-size: 1.8rem; margin: 18px 0 2px; letter-spacing: -.04em; }
+.price-card span { color: var(--muted); }
+.badge { position: absolute; top: -13px; right: 20px; background: var(--accent); color: var(--bg); padding: 6px 10px; border-radius: 999px; font-size: .75rem; font-weight: 800; }
+.pricing-method {
+  margin-top: 56px;
+  padding-top: 46px;
+  border-top: 1px solid var(--line);
+}
+.method-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 14px;
+}
+.method-grid article {
+  background: rgba(255,255,255,.05);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 20px;
+}
+.method-grid p {
+  color: var(--muted);
+  margin-top: 10px;
+  font-size: .94rem;
+}
+.summary-list { display: grid; gap: 14px; }
+.summary-list article,
+.path-card {
+  background: rgba(255,255,255,.05);
+  border: 1px solid var(--line);
+  border-radius: 22px;
+  padding: 22px;
+}
+.summary-list span,
+.path-card span {
+  color: var(--accent);
+  font-size: .82rem;
+  font-weight: 800;
+}
+.summary-list h3,
+.path-card h3 { margin-top: 8px; }
+.summary-list p,
+.path-card p {
+  color: var(--muted);
+  margin-top: 8px;
+}
+.path-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+.path-card {
+  min-height: 230px;
+  display: flex;
+  flex-direction: column;
+}
+.path-card.featured {
+  border-color: rgba(84,230,193,.62);
+  box-shadow: 0 0 0 1px rgba(84,230,193,.18);
+}
+.path-card a {
+  color: var(--accent);
+  font-weight: 800;
+  margin-top: auto;
+}
+.cta { background: radial-gradient(circle at center, rgba(84,230,193,.13), transparent 45%); }
+.cta-box { display: grid; grid-template-columns: .9fr 1.1fr; gap: 42px; background: var(--bg-soft); border: 1px solid var(--line); border-radius: 30px; padding: 36px; }
+.cta-box p { color: var(--muted); margin-top: 14px; }
+.contact-form { display: grid; gap: 12px; }
+.direct-contact { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }
+.direct-contact a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 10px 14px;
+  color: var(--text);
+  background: rgba(255,255,255,.05);
+  font-size: .92rem;
+  font-weight: 800;
+}
+.direct-contact a:first-child {
+  border-color: rgba(84,230,193,.5);
+  color: var(--accent);
+}
+input, textarea { width: 100%; border: 1px solid var(--line); background: rgba(255,255,255,.06); color: var(--white); padding: 14px 15px; border-radius: 14px; font-family: inherit; }
+textarea { min-height: 120px; resize: vertical; }
+button { border: none; background: var(--accent); color: var(--bg); padding: 15px; border-radius: 14px; font-weight: 800; cursor: pointer; }
+footer { border-top: 1px solid var(--line); padding: 28px 0; }
+.footer-content { display: flex; justify-content: space-between; align-items: center; color: var(--muted); }
+
+.section-actions { margin-top: 28px; display: flex; justify-content: flex-start; }
+.section-actions.center { justify-content: center; }
+.compact-grid { grid-template-columns: repeat(3, 1fr); }
+
+.page-hero {
+  padding: 96px 0 72px;
+  background:
+    radial-gradient(circle at top right, rgba(84,230,193,.2), transparent 36%),
+    radial-gradient(circle at bottom left, rgba(106,168,255,.14), transparent 34%);
+}
+.page-intro { max-width: 860px; }
+.page-intro h1 { margin-bottom: 24px; }
+.page-intro > p:not(.eyebrow) { color: var(--muted); font-size: 1.16rem; max-width: 760px; margin-bottom: 32px; }
+
+.detail-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+.detail-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  padding: 28px;
+}
+.detail-card.featured {
+  border-color: rgba(84,230,193,.62);
+  box-shadow: 0 0 0 1px rgba(84,230,193,.18);
+}
+.detail-card p { color: var(--muted); margin-top: 12px; }
+.detail-number {
+  display: inline-block;
+  color: var(--accent);
+  font-weight: 800;
+  margin-bottom: 18px;
+}
+.stack-list { display: grid; gap: 14px; }
+.stack-list p {
+  background: rgba(255,255,255,.05);
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  color: var(--muted);
+  padding: 18px;
+}
+
+.timeline { display: grid; gap: 18px; }
+.timeline-step {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: 24px;
+  align-items: start;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  padding: 26px;
+}
+.timeline-step span {
+  color: var(--accent);
+  font-size: 1.4rem;
+  font-weight: 800;
+}
+.route-label {
+  display: inline-flex;
+  width: fit-content;
+  color: var(--bg);
+  background: var(--accent);
+  border-radius: 999px;
+  padding: 5px 10px;
+  font-size: .76rem;
+  font-weight: 800;
+  margin-bottom: 10px;
+}
+.timeline-step p { color: var(--muted); margin-top: 10px; }
+
+.comparison-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.comparison-grid article {
+  background: rgba(255,255,255,.05);
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  padding: 24px;
+}
+.comparison-grid p { color: var(--muted); margin-top: 12px; }
+
+.safety-grid { display: grid; gap: 14px; }
+.safety-grid article {
+  background: rgba(255,255,255,.05);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  padding: 20px;
+}
+.safety-grid span {
+  color: var(--accent);
+  font-size: .82rem;
+  font-weight: 800;
+}
+.safety-grid h3 { margin-top: 8px; }
+.safety-grid p { color: var(--muted); margin-top: 8px; }
+
+@media (max-width: 900px) {
+  .nav-content { flex-wrap: wrap; gap: 12px; padding: 14px 0; }
+  .logo { order: 1; }
+  .language-switch { order: 2; margin-left: auto; }
+  nav {
+    order: 3;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 8px;
+    font-size: .86rem;
+  }
+  nav a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 38px;
+    padding: 8px 10px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    background: rgba(255,255,255,.04);
+    text-align: center;
+  }
+  .nav-cta { border-color: transparent; }
+  .hero-grid, .split, .cta-box { grid-template-columns: 1fr; }
+  .service-grid, .steps, .price-grid, .detail-grid, .comparison-grid, .method-grid, .path-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 620px) {
+  .container { width: calc(100% - 32px); }
+  nav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  nav a { min-width: 0; }
+  .service-grid, .steps, .price-grid, .detail-grid, .comparison-grid, .method-grid, .path-grid { grid-template-columns: 1fr; }
+  .footer-content { flex-direction: column; gap: 10px; text-align: center; }
+  .timeline-step { grid-template-columns: 1fr; gap: 10px; }
+  .hero {
+    min-height: auto;
+    padding: 58px 0 48px;
+    background:
+      linear-gradient(180deg, rgba(7,17,31,.86) 0%, rgba(7,17,31,.96) 58%, rgba(7,17,31,.98) 100%),
+      radial-gradient(ellipse at 85% 30%, rgba(106,168,255,.22), transparent 65%);
+    background-size: auto 100%, cover;
+    background-position: center, 62% center;
+  }
+  .hero-grid { gap: 42px; }
+  .eyebrow { font-size: .72rem; letter-spacing: .1em; overflow-wrap: anywhere; }
+  h1 { font-size: 2.55rem; letter-spacing: -.055em; }
+  .hero-text { font-size: 1.03rem; margin: 22px 0 28px; }
+  .btn { width: 100%; justify-content: center; text-align: center; }
+}
+</style>
+  <style>/* New components use the existing site palette and typography. */
+[hidden]{display:none!important}
+html{scroll-padding-top:115px}
+button,input,select,textarea{font:inherit}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--accent-2);outline-offset:4px}
+.skip-link{position:absolute;left:16px;top:-100px;z-index:200;background:var(--accent);color:var(--bg);padding:12px;border-radius:8px}
+.skip-link:focus{top:8px}
+.page-index .hero-grid{grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:44px}
+.page-index .hero h1{font-size:clamp(2.6rem,4.4vw,4rem);line-height:1.04;letter-spacing:-.055em}
+.page-index .hero-text{margin-bottom:16px}
+.hero-outcome{color:var(--accent);font-weight:700;margin-bottom:26px;font-size:1.05rem}
+.hero-demo{min-width:0}
+.dashboard{padding:0;border:1px solid #314b60;border-radius:24px;background:var(--bg-soft);overflow:hidden;box-shadow:0 24px 70px rgba(0,0,0,.2)}
+.dash-top{padding:19px 22px 15px;display:flex;justify-content:space-between;align-items:center;gap:14px;border-bottom:1px solid var(--line)}
+.dash-top b{font-size:14px}.dash-top span{font-size:10px;letter-spacing:1px;color:var(--muted);white-space:nowrap}
+.dash-tabs{display:flex;gap:6px;padding:15px 20px 0}
+.dash-tabs button{background:transparent;border:1px solid transparent;border-radius:999px;color:var(--muted);font-size:12px;padding:6px 13px;min-height:36px}
+.dash-tabs button[aria-selected=true]{color:var(--accent);border-color:#3d736c;background:#14332f}
+.dash-body{padding:21px 22px 18px}.dash-stats{display:grid;grid-template-columns:1.2fr 1fr;gap:20px}
+.dash-label{font-size:12px;color:var(--muted)}.dash-value{font-size:32px;letter-spacing:-1.5px;font-weight:700;line-height:1.2;margin:6px 0}.dash-value.small{font-size:27px}.dash-note{font-size:11px;color:var(--accent)}
+.chart{height:163px;margin-top:17px}.chart svg{width:100%;height:100%;display:block;overflow:visible}
+.dash-bottom{padding-top:13px;border-top:1px solid var(--line);display:flex;align-items:flex-start;gap:10px;color:#d1dfed;font-size:12px}
+.dash-bottom i{display:inline-flex;flex:none;width:24px;height:24px;border-radius:50%;align-items:center;justify-content:center;background:#203f3d;color:var(--accent);font-style:normal;font-weight:700}
+.demo-caption{font-size:11px;color:var(--muted);margin-top:12px;text-align:center;line-height:1.5}
+.page-index .path-grid{grid-template-columns:repeat(4,minmax(0,1fr))}.path-card p{margin-bottom:22px}
+.deliver{background:var(--bg-soft)}.deliver-grid{display:grid;grid-template-columns:.88fr 1.12fr;gap:70px;align-items:start}.deliver-copy>p:not(.eyebrow){color:var(--muted);margin:22px 0 26px}
+.deliver-list{list-style:none;padding:0;margin:0;gap:0}.deliver-list li{display:grid;grid-template-columns:36px 1fr;gap:15px;padding:23px 0;border-bottom:1px solid var(--line)}.deliver-list li::before{content:none}.deliver-list li:first-child{padding-top:0}.deliver-list li:last-child{border:0;padding-bottom:0}.check{border:1px solid #3d7065;border-radius:8px;display:flex;align-items:center;justify-content:center;width:32px;height:32px;color:var(--accent);font-size:15px}.deliver-list b{font-size:17px;color:var(--text)}.deliver-list p{font-size:14px;color:var(--muted);margin-top:6px}
+.budget-bridge{padding:54px 0}.budget-banner{display:grid;grid-template-columns:1fr auto;gap:30px;align-items:center;padding:36px;border:1px solid #3e766a;border-radius:24px;background:#112e2c}.budget-banner h2{font-size:clamp(1.9rem,3vw,2.5rem);max-width:650px}.budget-banner p:not(.eyebrow){margin-top:16px;color:#b4cdc7;font-size:15px}
+.service-link{display:inline-flex;align-items:center;min-height:44px;color:var(--accent);font-weight:700;margin-top:22px;font-size:.94rem}
+.scope-note{color:var(--muted);border-left:3px solid var(--accent);padding:0 0 0 20px;margin-bottom:32px;max-width:780px}
+.budget-section{padding-top:54px;padding-bottom:54px;background:var(--bg-soft)}.section-description{margin-top:20px;color:var(--muted)}.price-card{display:flex;flex-direction:column}.price-card .service-link{margin-top:auto;padding-top:24px}.price-card ul{margin-bottom:16px}.page-planes .pricing{padding-top:54px}
+.contact-note{color:var(--muted);font-size:12px;line-height:1.6}.contact-result{border-top:1px solid var(--line);padding-top:20px}.contact-result pre{white-space:pre-wrap;overflow-wrap:anywhere;background:var(--bg);color:var(--text);padding:18px;border:1px solid var(--line);border-radius:14px;font:14px/1.6 Inter,Arial,sans-serif;margin:18px 0}.contact-actions{display:flex;gap:10px;flex-wrap:wrap}.contact-actions .btn{font-size:13px;min-height:44px;padding:12px 16px}
+@media(max-width:1100px){.page-index .hero-grid{gap:28px}.dash-value{font-size:28px}.dash-value.small{font-size:24px}.page-index .path-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:900px){html{scroll-padding-top:155px}.page-index .hero-grid{grid-template-columns:1fr;gap:38px}.hero-demo{max-width:640px;width:100%}.deliver-grid{grid-template-columns:1fr;gap:36px}.budget-banner{grid-template-columns:1fr}.budget-banner .btn{justify-self:start}.split{gap:34px}}
+@media(max-width:620px){html{scroll-padding-top:190px}section{padding:54px 0}.page-index .path-grid{grid-template-columns:1fr}.page-index .hero h1{font-size:2.55rem}.dash-top{padding:16px;flex-wrap:wrap;gap:6px}.dash-body{padding:18px 14px}.dash-tabs{padding-inline:14px;gap:3px}.dash-tabs button{padding:7px 10px}.dash-stats{gap:12px}.dash-value{font-size:29px}.dash-value.small{font-size:24px}.budget-banner{padding:26px}.cta-box{padding:24px;gap:28px}.page-hero{padding:60px 0 48px}.detail-card h2,.timeline-step h2{font-size:1.9rem}.contact-actions .btn{flex:1;white-space:normal}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
-<body>
+<body class="page-servicios">
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
   <header class="navbar">
     <div class="container nav-content">
       <a href="index.html" class="logo">LZsul<span>.</span></a>
-      <nav>
+      <nav aria-label="Navegación principal">
         <a href="servicios.html" class="active">Servicios</a>
         <a href="proceso.html">Proceso</a>
-        <a href="planes.html">Planes</a>
+        <a href="planes.html">Presupuestos</a>
         <a href="index.html#contacto" class="nav-cta">Diagnóstico gratis</a>
       </nav>
       <div class="language-switch" aria-label="Selector de idioma">
@@ -26,7 +407,7 @@
     </div>
   </header>
 
-  <main>
+  <main id="contenido">
     <section class="page-hero">
       <div class="container page-intro">
         <p class="eyebrow">Servicios</p>
@@ -37,7 +418,7 @@
         </p>
         <div class="hero-actions">
           <a href="index.html#contacto" class="btn primary">Solicitar diagnóstico</a>
-          <a href="planes.html" class="btn secondary">Ver planes</a>
+          <a href="planes.html" class="btn secondary">Ver presupuestos</a>
         </div>
       </div>
     </section>
@@ -55,7 +436,7 @@
               <li>Homologación de fechas, nombres, teléfonos y categorías</li>
               <li>Validaciones para reducir errores futuros</li>
             </ul>
-          </article>
+          <a class="service-link" href="planes.html?servicio=cleanup#cotizador">Estimar la limpieza →</a></article>
 
           <article class="detail-card">
             <span class="detail-number">02</span>
@@ -67,7 +448,7 @@
               <li>Filtros por fecha, sucursal, vendedor, producto o segmento</li>
               <li>Construcción en Power BI, Looker Studio o Excel</li>
             </ul>
-          </article>
+          <a class="service-link" href="planes.html?servicio=control#cotizador">Estimar mi tablero →</a></article>
 
           <article class="detail-card">
             <span class="detail-number">03</span>
@@ -79,7 +460,7 @@
               <li>Actualizaciones periódicas de reportes</li>
               <li>Documentación básica para operación interna</li>
             </ul>
-          </article>
+          <a class="service-link" href="planes.html?servicio=process#cotizador">Revisar mi proceso →</a></article>
 
           <article class="detail-card featured">
             <span class="detail-number">04</span>
@@ -91,7 +472,7 @@
               <li>Revisión de calidad de datos</li>
               <li>Soporte mensual para cambios operativos</li>
             </ul>
-          </article>
+          <a class="service-link" href="index.html#contacto">Revisar el soporte →</a></article>
         </div>
       </div>
     </section>
@@ -106,10 +487,11 @@
           <p>Base limpia y documentada para trabajar con mayor confianza.</p>
           <p>Dashboard ejecutivo con indicadores entendibles para el equipo.</p>
           <p>Proceso de actualización más claro para evitar reportes manuales innecesarios.</p>
-        </div>
+        <p>Validamos los resultados contigo y explicamos cómo usar lo que recibes.</p></div>
       </div>
     </section>
 
+    <section class="budget-bridge"><div class="container"><div class="budget-banner"><div><p class="eyebrow">Presupuesto por alcance</p><h2>Conoce qué incluiría tu proyecto.</h2><p>Responde unas preguntas y revisa un rango orientativo antes de compartir tus datos.</p></div><a class="btn primary" href="planes.html#cotizador">Calcular mi presupuesto</a></div></div></section>
     <section class="cta">
       <div class="container cta-box">
         <div>
@@ -118,12 +500,12 @@
           <p>Lo revisamos contigo y te proponemos una ruta concreta para limpiarlo, automatizarlo o convertirlo en dashboard.</p>
         </div>
         <form class="contact-form">
-          <input type="text" name="name" placeholder="Nombre" required>
-          <input type="email" name="email" placeholder="Correo" required>
-          <input type="tel" name="phone" placeholder="WhatsApp">
-          <input type="text" name="company" placeholder="Empresa">
-          <textarea name="message" placeholder="¿Qué necesitas mejorar de tus datos o reportes?"></textarea>
-          <button type="submit">Enviar solicitud</button>
+          <input type="text" name="name" placeholder="Nombre" required aria-label="Nombre">
+          <input type="email" name="email" placeholder="Correo" required aria-label="Correo">
+          <input type="tel" name="phone" placeholder="WhatsApp" aria-label="WhatsApp">
+          <input type="text" name="company" placeholder="Empresa" aria-label="Empresa">
+          <textarea name="message" placeholder="¿Qué necesitas mejorar de tus datos o reportes?" aria-label="¿Qué necesitas mejorar de tus datos o reportes?"></textarea>
+          <button type="submit">Preparar solicitud</button>
         </form>
       </div>
     </section>
@@ -136,6 +518,58 @@
     </div>
   </footer>
 
-  <script src="script.js"></script>
+  <script>'use strict';
+(()=>{
+const $=id=>document.getElementById(id);
+const en=document.documentElement.lang==='en';
+if($('demo-chart')){
+const dataset={
+ventas:{label:'Ventas del mes',value:'$238,000',note:'+8.2% sobre la meta mensual',secondLabel:'Meta del mes',secondValue:'$220,000',secondNote:'Importes en MXN',values:[148,170,162,198,211,238],labels:['Abr','May','Jun','Jul','Ago','Sep'],axis:['0','125','250'],max:250,unit:'Miles de MXN',insight:'Compara el resultado mensual contra tu meta y detecta cambios a tiempo.'},
+cobranza:{label:'Saldo pendiente',value:'$186,000',note:'$52,000 requieren atención por vencimiento',secondLabel:'Cartera vencida',secondValue:'28.0%',secondNote:'Del saldo total pendiente',values:[134,25,17,10],labels:['Por vencer','1–30 días','31–60 días','61+ días'],axis:['0','75','150'],max:150,unit:'Miles de MXN',insight:'Prioriza el seguimiento por antigüedad del saldo. Los importes suman $186,000.'},
+operacion:{label:'Entregas a tiempo',value:'92.0%',note:'230 de 250 entregas en el mes',secondLabel:'Entregas tardías',secondValue:'20',secondNote:'8.0% del total del mes',values:[84,87,86,90,89,92],labels:['Abr','May','Jun','Jul','Ago','Sep'],axis:['0','50','100'],max:100,unit:'% a tiempo',insight:'Revisa la puntualidad de la operación y detecta periodos que necesitan atención.'}
+};
+function drawDemo(key){const d=dataset[key];for(const [id,value]of Object.entries({'metric-label':d.label,'metric-value':d.value,'metric-note':d.note,'second-label':d.secondLabel,'second-value':d.secondValue,'second-note':d.secondNote,'demo-insight':d.insight}))$(id).textContent=value;document.querySelectorAll('[data-demo]').forEach(b=>{const active=b.dataset.demo===key;b.setAttribute('aria-selected',String(active));b.tabIndex=active?0:-1;});$('demo-panel').setAttribute('aria-labelledby','tab-'+key);const width=Math.max(230,document.getElementById('demo-chart').clientWidth),height=162,left=36,right=8,top=24,bottom=130,w=width-left-right,slot=w/d.values.length;const lines=[0,.5,1].map((f,i)=>{const y=bottom-f*(bottom-top);return `<line x1="${left}" y1="${y}" x2="${width-right}" y2="${y}" stroke="#293c50"/><text x="${left-8}" y="${y+4}" text-anchor="end" fill="#a8bacd" font-size="11">${d.axis[i]}</text>`;}).join('');const bars=d.values.map((v,i)=>{const barW=slot*.48,x=left+i*slot+(slot-barW)/2,h=v/d.max*(bottom-top);return `<rect x="${x}" y="${bottom-h}" width="${barW}" height="${h}" rx="3" fill="${i===d.values.length-1?'#54e6c1':'#355f71'}"><title>${d.labels[i]}: ${v} ${d.unit}</title></rect><text x="${x+barW/2}" y="${bottom-h-5}" fill="#d4e6ef" text-anchor="middle" font-size="11">${v}</text><text x="${x+barW/2}" y="150" fill="#a8bacd" text-anchor="middle" font-size="11">${d.labels[i]}</text>`;}).join('');$('demo-chart').innerHTML=`<svg viewBox="0 0 ${width} ${height}" role="img" aria-label="${d.label}. ${d.values.map((v,i)=>d.labels[i]+': '+v+' '+d.unit).join('; ')}"><text x="${left}" y="10" fill="#a8bacd" font-size="11">${d.unit}</text>${lines}${bars}</svg>`;}
+document.querySelectorAll('[data-demo]').forEach((b,i,all)=>{b.addEventListener('click',()=>drawDemo(b.dataset.demo));b.addEventListener('keydown',e=>{let n=i;if(e.key==='ArrowRight')n=(i+1)%all.length;else if(e.key==='ArrowLeft')n=(i+all.length-1)%all.length;else if(e.key==='Home')n=0;else if(e.key==='End')n=all.length-1;else return;e.preventDefault();all[n].focus();drawDemo(all[n].dataset.demo);});});
+
+drawDemo('ventas');
+new ResizeObserver(()=>drawDemo(document.querySelector('[data-demo][aria-selected=true]').dataset.demo)).observe($('demo-chart'));
+}
+const CONTACT_EMAIL='contacto@lzsul.com';
+const CONTACT_WHATSAPP_NUMBER='13392351840';
+function buildWhatsappUrl(message){return 'https://wa.me/'+CONTACT_WHATSAPP_NUMBER+'?text='+encodeURIComponent(message);}
+function buildEmailUrl(subject,body){return 'mailto:'+CONTACT_EMAIL+'?'+new URLSearchParams({subject,body});}
+function buildContactMessage(form){
+ const data=new FormData(form),empty=en?'Not provided':'No indicado';
+ return [en?'Hello, I would like to request a diagnostic for my data.':'Hola, quiero solicitar un diagnóstico para mis datos.','',
+ (en?'Name: ':'Nombre: ')+(data.get('name')||empty),
+ (en?'Email: ':'Correo: ')+(data.get('email')||empty),
+ (en?'WhatsApp: ':'WhatsApp: ')+(data.get('phone')||empty),
+ (en?'Company: ':'Empresa: ')+(data.get('company')||empty),'',
+ (en?'Need: ':'Necesidad: ')+(data.get('message')||empty)].join('\n');
+}
+document.querySelectorAll('.contact-form').forEach(form=>{
+ const note=document.createElement('p');note.className='contact-note';
+ note.textContent=en?'We prepare your request on this device. You choose whether to send it by email or WhatsApp.':'Preparamos tu solicitud en este dispositivo. Tú eliges si la envías por correo o WhatsApp.';form.append(note);
+ const result=document.createElement('div');result.className='contact-result';result.hidden=true;
+ const status=document.createElement('p');status.setAttribute('role','status');status.textContent=en?'Your message is ready to review and send.':'Tu mensaje está listo para revisar y enviar.';
+ const summary=document.createElement('pre');
+ const links=document.createElement('div');links.className='contact-actions';
+ const email=document.createElement('a');email.className='btn primary';email.textContent=en?'Open email':'Abrir correo';
+ const whatsapp=document.createElement('a');whatsapp.className='btn secondary';whatsapp.textContent=en?'Open WhatsApp':'Abrir WhatsApp';whatsapp.target='_blank';whatsapp.rel='noopener';
+ const edit=document.createElement('button');edit.type='button';edit.className='btn secondary';edit.textContent=en?'Edit request':'Editar solicitud';
+ links.append(email,whatsapp,edit);result.append(status,summary,links);form.append(result);
+ form.addEventListener('submit',event=>{event.preventDefault();const message=buildContactMessage(form);summary.textContent=message;email.href=buildEmailUrl(en?'LZsul diagnostic request':'Solicitud de diagnóstico LZsul',message);whatsapp.href=buildWhatsappUrl(message);result.hidden=false;result.scrollIntoView({behavior:'smooth',block:'nearest'});});
+ edit.addEventListener('click',()=>{result.hidden=true;form.elements.namedItem('name').focus();});
+});
+document.querySelectorAll('.cta-box > div:first-child').forEach(content=>{
+ if(content.querySelector('.direct-contact'))return;
+ const links=document.createElement('div');links.className='direct-contact';
+ const whatsapp=document.createElement('a');whatsapp.href=buildWhatsappUrl(en?'Hello, I would like information about LZsul services.':'Hola, quiero información sobre los servicios de LZsul.');whatsapp.target='_blank';whatsapp.rel='noopener';whatsapp.textContent='WhatsApp: +1 339 235 1840';
+ const email=document.createElement('a');email.href='mailto:'+CONTACT_EMAIL;email.textContent=CONTACT_EMAIL;
+ links.append(whatsapp,email);content.append(links);
+});
+
+})();
+</script>
 </body>
 </html>
