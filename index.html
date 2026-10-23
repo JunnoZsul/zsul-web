@@ -354,6 +354,13 @@ footer { border-top: 1px solid var(--line); padding: 28px 0; }
 .demo-legend{font-size:10px;color:var(--muted);display:flex;gap:15px;align-items:center;margin:14px 0 0}.demo-legend span{display:inline-flex;align-items:center;gap:6px}.demo-legend .actual::before{content:'';height:7px;width:7px;border-radius:2px;background:var(--accent)}.demo-legend .target::before{content:'';width:16px;border-top:2px dashed #f4c77c}
 .dash-body .chart{margin-top:8px}.demo-details{margin-top:14px;font-size:11px;color:var(--muted)}.demo-details summary{cursor:pointer;min-height:40px;display:list-item;align-content:center;color:var(--text)}.demo-details table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums;margin-bottom:12px}.demo-details th,.demo-details td{padding:7px 4px;border-bottom:1px solid var(--line);text-align:right}.demo-details th:first-child,.demo-details td:first-child{text-align:left}.demo-details caption{text-align:left;margin-bottom:8px}.demo-cta{display:inline-flex;align-items:center;min-height:40px;color:var(--accent);font-size:12px;font-weight:700;margin-top:6px}
 @media(max-width:540px){.dash-filter{padding-left:16px;padding-right:16px}.dash-filter label{gap:6px}.dash-top{flex-wrap:wrap}.dash-filter select{max-width:134px}.demo-status{font-size:9px;padding:4px 6px}}
+
+.dashboard .dash-top{padding:17px 20px}.dashboard .dash-top b{font-size:13px}.dashboard .dash-top span{font-size:9px}
+.dashboard .dash-filter{display:grid;grid-template-columns:.8fr 1.2fr;gap:12px;padding:14px 20px 0}.dash-control{min-width:0;display:flex;align-items:center;gap:7px}.dash-control label{flex:none;font-size:11px}.dash-control select{min-width:0;max-width:none;width:100%;font-size:11px;min-height:38px}
+.dashboard .dash-tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:4px;padding:13px 16px 0}.dashboard .dash-tabs button{padding:7px 4px;min-height:40px;border-radius:10px;font-size:11px;cursor:pointer}
+.demo-question{font-size:12px;line-height:1.5;color:#b9ccdd;margin-bottom:17px;min-height:36px}.dashboard .dash-body{padding:17px 20px 16px}.dashboard .dash-stats{grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.dashboard .dash-label{font-size:10px}.dashboard .dash-value{font-size:24px;letter-spacing:-.8px;margin:5px 0;overflow-wrap:anywhere}.dashboard .dash-note{font-size:10px;line-height:1.5;min-height:30px;color:var(--muted)}.dash-stat{min-width:0}.dash-stat:last-child .dash-value{color:var(--accent)}
+.demo-chart-heading{font-size:11px;font-weight:700;margin-top:17px}.dashboard .demo-legend{margin-top:8px;gap:14px}.demo-legend .compare::before{content:'';width:7px;height:7px;border-radius:2px;background:#d9ad69}.dashboard .chart{height:180px;margin-top:8px}.demo-table-wrap{overflow-x:auto}.demo-details th,.demo-details td{font-size:10px}.dashboard .dash-bottom{min-height:62px}
+@media(max-width:540px){.dashboard .dash-top{padding:16px}.dashboard .dash-filter{padding-left:16px;padding-right:16px;grid-template-columns:1fr 1.25fr;gap:10px}.dash-control{display:block}.dash-control label{display:block;margin-bottom:4px}.dashboard .dash-body{padding:16px}.dashboard .dash-tabs{padding-left:12px;padding-right:12px}.dashboard .dash-tabs button{font-size:10px}.dashboard .dash-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.dash-stat:last-child{grid-column:1/-1;display:grid;grid-template-columns:1fr auto;align-items:center;border-top:1px solid var(--line);padding-top:9px}.dash-stat:last-child .dash-value{grid-column:2;grid-row:1/3;margin-left:12px}.dash-stat:last-child .dash-label,.dash-stat:last-child .dash-note{grid-column:1}.dash-stat:last-child .dash-note{min-height:0}.dashboard .dash-bottom{min-height:0}}
 </style>
   <style>/* New components use the existing site palette and typography. */
 [hidden]{display:none!important}
@@ -435,7 +442,27 @@ a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,te
             <span>Entrega revisada contigo</span>
           </div>
         </div>
-        <div class="hero-demo"><section class="dashboard" id="ejemplos" aria-label="Tablero interactivo de demostración"><div class="dash-top"><b>Tu negocio, en una vista.</b><span id="demo-cutoff">23 OCT · DATOS DE EJEMPLO</span></div><div class="dash-filter"><label for="demo-period">Periodo <select id="demo-period"><option value="3">Julio 2026</option><option value="4">Agosto 2026</option><option value="5">Septiembre 2026</option><option value="6" selected>Octubre · al 23</option></select></label><span class="demo-status" id="demo-status"></span></div><div class="dash-tabs" role="tablist" aria-label="Ejemplo de tablero"><button id="tab-ventas" role="tab" aria-selected="true" aria-controls="demo-panel" data-demo="ventas">Ventas</button><button id="tab-cobranza" role="tab" aria-selected="false" aria-controls="demo-panel" data-demo="cobranza" tabindex="-1">Cobranza</button><button id="tab-operacion" role="tab" aria-selected="false" aria-controls="demo-panel" data-demo="operacion" tabindex="-1">Operación</button></div><div class="dash-body" id="demo-panel" role="tabpanel" aria-labelledby="tab-ventas"><div class="dash-stats" aria-live="polite"><div><p class="dash-label" id="metric-label">Ventas del mes</p><p class="dash-value" id="metric-value">$238,000</p><p class="dash-note" id="metric-note">+8.2% sobre la meta mensual</p></div><div><p class="dash-label" id="second-label">Meta del mes</p><p class="dash-value small" id="second-value">$220,000</p><p class="dash-label" id="second-note">Importes en MXN</p></div></div><div class="demo-legend" aria-label="Leyenda de la gráfica"><span class="actual">Resultado</span><span class="target" id="demo-target-legend">Meta</span></div><div class="chart" id="demo-chart"></div><div class="dash-bottom"><i aria-hidden="true">i</i><span id="demo-insight">Compara el resultado mensual contra tu meta y detecta cambios a tiempo.</span></div><details class="demo-details"><summary>Ver tabla de datos</summary><table><caption id="demo-table-caption"></caption><thead id="demo-table-head"></thead><tbody id="demo-table-body"></tbody></table></details><a class="demo-cta" href="planes.html?servicio=control#cotizador">Quiero un tablero así →</a></div></section><p class="demo-caption">Datos ficticios. Octubre con corte al 23/10/2026; meses anteriores completos. No representan resultados de clientes.</p></div>
+        <div class="hero-demo">
+ <section class="dashboard" id="ejemplos" aria-label="Demo de tableros por área empresarial">
+  <div class="dash-top"><b>Explora un área de tu empresa.</b><span>DEMO / 2026</span></div>
+  <div class="dash-filter">
+   <div class="dash-control"><label for="demo-period">Mes</label><select id="demo-period"><option value="0">Julio</option><option value="1">Agosto</option><option value="2">Septiembre</option><option value="3" selected>Octubre</option></select></div>
+   <div class="dash-control"><label for="demo-branch">Sucursal</label><select id="demo-branch"><option value="all">Todas</option><option value="0">Centro</option><option value="1">Norte</option></select></div>
+  </div>
+  <div class="dash-tabs" role="tablist" aria-label="Áreas de la empresa"><button id="tab-finance" role="tab" aria-selected="true" aria-controls="demo-panel" data-area="finance">Finanzas</button><button id="tab-sales" role="tab" aria-selected="false" aria-controls="demo-panel" data-area="sales" tabindex="-1">Ventas</button><button id="tab-inventory" role="tab" aria-selected="false" aria-controls="demo-panel" data-area="inventory" tabindex="-1">Inventario</button><button id="tab-people" role="tab" aria-selected="false" aria-controls="demo-panel" data-area="people" tabindex="-1">Personal</button></div>
+  <div class="dash-body" id="demo-panel" role="tabpanel" aria-labelledby="tab-finance">
+   <p class="demo-question" id="demo-question">¿Qué entra, qué sale y cuánto queda?</p>
+   <div class="dash-stats" aria-live="polite"><div class="dash-stat"><p class="dash-label" id="demo-label-0">Ingresos</p><p class="dash-value" id="demo-value-0">$365,000</p><p class="dash-note" id="demo-note-0">Del mes seleccionado</p></div><div class="dash-stat"><p class="dash-label" id="demo-label-1">Egresos</p><p class="dash-value" id="demo-value-1">$283,000</p><p class="dash-note" id="demo-note-1">Salidas de la operación</p></div><div class="dash-stat"><p class="dash-label" id="demo-label-2">Saldo neto</p><p class="dash-value" id="demo-value-2">$82,000</p><p class="dash-note" id="demo-note-2">22.5% de los ingresos</p></div></div>
+   <p class="demo-chart-heading" id="demo-chart-heading">Ingresos y egresos por mes</p>
+   <div class="demo-legend" aria-label="Leyenda de la gráfica"><span class="actual" id="demo-series">Ingresos</span><span class="compare" id="demo-compare-label">Egresos</span></div>
+   <div class="chart" id="demo-chart"></div>
+   <div class="dash-bottom"><i aria-hidden="true">i</i><span id="demo-insight" aria-live="polite">Compara entradas y salidas para planear tu efectivo.</span></div>
+   <details class="demo-details"><summary>Ver tabla de datos</summary><div class="demo-table-wrap"><table><caption id="demo-table-caption"></caption><thead id="demo-table-head"></thead><tbody id="demo-table-body"></tbody></table></div></details>
+   <a class="demo-cta" href="planes.html?servicio=control#cotizador">Quiero un tablero para mi área →</a>
+  </div>
+ </section>
+ <p class="demo-caption">Empresa, sucursales y datos ficticios para explorar distintas áreas. No representan resultados de clientes.</p>
+</div>
       </div>
     </section>
 
@@ -527,50 +554,77 @@ const $=id=>document.getElementById(id);
 const en=document.documentElement.lang==='en';
 
 if($('demo-chart')){
-const DEMO={
- sales:[148,170,162,198,211,238,192], targets:[160,175,180,205,215,220,240],
- deliveries:[210,218,215,225,223,230,174], totals:[250,250,250,250,250,250,180],
- receivables:{3:[133,35,24,18],4:[135,30,20,13],5:[134,25,17,10],6:[126,22,14,8]}
+const SAMPLE={
+ income:[[165,125],[177,132],[190,145],[207,158]],
+ expense:[[132,109],[139,112],[145,121],[154,129]],
+ tickets:[[1000,800],[1100,850],[1200,900],[1380,1020]],
+ stock:[[[72,95,205,45],[48,77,152,30]],[[64,90,198,40],[42,72,147,25]],[[55,88,195,34],[36,68,141,21]],[[42,85,190,23],[31,62,130,18]]],
+ minimum:[[50,60,100,30],[40,50,80,25]],cost:[1200,350,85,190],
+ people:[[[16,7,5,3],[12,5,4,2]],[[17,7,5,3],[13,5,4,3]],[[17,8,5,4],[13,6,4,3]],[[18,8,5,4],[14,6,4,3]]],
+ vacancies:[[[3,2,0,2],[2,2,0,1]],[[2,2,0,2],[2,2,0,0]],[[3,1,0,1],[2,1,0,0]],[[2,1,0,1],[1,1,0,0]]],
+ absence:[[29,20],[26,21],[27,19],[24,18]]
 };
-const months=en?['Apr','May','Jun','Jul','Aug','Sep','Oct*']:['Abr','May','Jun','Jul','Ago','Sep','Oct*'];
-const currency=n=>new Intl.NumberFormat(en?'en-US':'es-MX',{style:'currency',currency:'MXN',maximumFractionDigits:0}).format(n);
-const pct=n=>n.toFixed(1)+'%';
-let activeDemo='ventas';
-function demoData(key,end){
- const labels=months.slice(0,end+1), values=DEMO.sales.slice(0,end+1), target=DEMO.targets[end], sales=DEMO.sales[end];
- if(key==='ventas'){
-  const delta=(sales/(end===6?179:DEMO.sales[end-1])-1)*100,gap=sales-target,met=gap>=0;
-  return {label:en?'Monthly sales':'Ventas del mes',value:currency(sales*1000),note:(delta>=0?'+':'')+pct(delta)+(end===6?(en?' vs. Sep (both to day 23)':' vs. sep (ambos al día 23)'):(en?' vs. previous month':' vs. mes anterior')),secondLabel:en?'Monthly target':'Meta del mes',secondValue:currency(target*1000),secondNote:pct(sales/target*100)+(en?' of target':' de cumplimiento'),values,labels,max:260,unit:en?'Thousand MXN':'Miles de MXN',targets:DEMO.targets.slice(0,end+1),status:end===6?(en?'Month in progress':'Mes en curso'):met?(en?'Target reached':'Meta alcanzada'):(en?'Below target':'Bajo la meta'),tone:end===6?'progress':met?'positive':'attention',insight:end===6?(en?`Month in progress, through Oct 23. ${currency(-gap*1000)} remains to reach the full-month target.`:`Mes en curso, al 23 de octubre. Faltan ${currency(-gap*1000)} para la meta del mes completo.`):met?(en?`Sales exceed the target by ${currency(gap*1000)}. Check which products sustained the growth.`:`Las ventas superan la meta por ${currency(gap*1000)}. Revisa qué productos sostuvieron el crecimiento.`):(en?`${currency(-gap*1000)} below target. Review the sales pipeline before month-end.`:`Faltan ${currency(-gap*1000)} para la meta. Revisa las oportunidades de venta antes del cierre.`),headers:[en?'Month':'Mes',en?'Sales (MXN)':'Ventas (MXN)',en?'Target (MXN)':'Meta (MXN)'],rows:values.map((v,i)=>[months[i],currency(v*1000),currency(DEMO.targets[i]*1000)])};
+const demoMonths=en?['Jul','Aug','Sep','Oct']:['Jul','Ago','Sep','Oct'];
+const demoMoney=n=>new Intl.NumberFormat(en?'en-US':'es-MX',{style:'currency',currency:'MXN',maximumFractionDigits:0}).format(n);
+const demoNumber=n=>new Intl.NumberFormat(en?'en-US':'es-MX',{maximumFractionDigits:1}).format(n);
+const demoPercent=n=>demoNumber(n)+'%';
+const sum=a=>a.reduce((total,n)=>total+n,0);
+function areaData(key,period,branch){
+ const branches=branch==='all'?[0,1]:[Number(branch)];
+ const monthly=(data,p)=>sum(branches.map(b=>data[p][b]));
+ const categories=data=>data[period][0].map((_,i)=>sum(branches.map(b=>data[period][b][i])));
+ const cards=(...items)=>items.map(([label,value,note])=>({label,value,note}));
+ if(key==='finance'){
+  const income=monthly(SAMPLE.income,period)*1000,expense=monthly(SAMPLE.expense,period)*1000,net=income-expense;
+  return {title:en?'Finance':'Finanzas',question:en?'What comes in, what goes out, and what is left?':'¿Qué entra, qué sale y cuánto queda?',cards:cards([en?'Income':'Ingresos',demoMoney(income),en?'For the selected month':'Del mes seleccionado'],[en?'Expenses':'Egresos',demoMoney(expense),en?'Operating outflows':'Salidas de la operación'],[en?'Net balance':'Saldo neto',demoMoney(net),demoPercent(net/income*100)+(en?' of income':' de los ingresos')]),chartTitle:en?'Income and expenses by month':'Ingresos y egresos por mes',labels:demoMonths.slice(0,period+1),values:SAMPLE.income.slice(0,period+1).map((_,p)=>monthly(SAMPLE.income,p)),compare:SAMPLE.expense.slice(0,period+1).map((_,p)=>monthly(SAMPLE.expense,p)),series:en?'Income':'Ingresos',compareLabel:en?'Expenses':'Egresos',unit:en?'Thousand MXN':'Miles de MXN',insight:en?`${demoMoney(net)} remains after operating outflows. Compare the income and expense trends to plan available cash.`:`Quedan ${demoMoney(net)} después de las salidas de operación. Compara la evolución de ingresos y egresos para planear el efectivo disponible.`,headers:[en?'Month':'Mes',en?'Income':'Ingresos',en?'Expenses':'Egresos',en?'Net':'Saldo'],rows:demoMonths.slice(0,period+1).map((m,p)=>[m,demoMoney(monthly(SAMPLE.income,p)*1000),demoMoney(monthly(SAMPLE.expense,p)*1000),demoMoney((monthly(SAMPLE.income,p)-monthly(SAMPLE.expense,p))*1000)])};
  }
- if(key==='cobranza'){
-  const buckets=DEMO.receivables[end],total=buckets.reduce((a,b)=>a+b,0),overdue=total-buckets[0];
-  const names=en?['Not due','1–30 days','31–60 days','61+ days']:['Por vencer','1–30 días','31–60 días','61+ días'];
-  return {label:en?'Outstanding balance':'Saldo pendiente',value:currency(total*1000),note:currency(overdue*1000)+(en?' past due':' vencidos'),secondLabel:en?'Past-due balance':'Cartera vencida',secondValue:pct(overdue/total*100),secondNote:en?'Of the outstanding balance':'Del saldo pendiente',values:buckets,labels:en?['Not due','1–30','31–60','61+']:['Por vencer','1–30','31–60','61+'],max:150,unit:en?'Thousand MXN · days past due':'Miles de MXN · días de atraso',targets:null,status:en?'Collection priority':'Priorizar cobranza',tone:'attention',insight:en?`${currency(buckets[3]*1000)} is more than 60 days overdue. Start follow-up with these accounts.`:`Hay ${currency(buckets[3]*1000)} con más de 60 días de atraso. Empieza el seguimiento por estas cuentas.`,headers:[en?'Aging':'Antigüedad',en?'Balance (MXN)':'Saldo (MXN)',en?'Share':'Proporción'],rows:buckets.map((v,i)=>[names[i],currency(v*1000),pct(v/total*100)])};
+ if(key==='sales'){
+  const labels=en?['Store','Online','Wholesale']:['Tienda','En línea','Mayoreo'];
+  const weights=[[.5,.3,.2],[.4,.2,.4]];
+  const allocate=(total,weights)=>{const first=weights.slice(0,-1).map(w=>Math.round(total*w));return [...first,total-sum(first)];};
+  const channelData=data=>labels.map((_,i)=>sum(branches.map(b=>allocate(data[period][b],weights[b])[i])));
+  const revenue=channelData(SAMPLE.income).map(n=>n*1000),tickets=channelData(SAMPLE.tickets),total=sum(revenue),count=sum(tickets),best=revenue.indexOf(Math.max(...revenue));
+  return {title:en?'Sales':'Ventas',question:en?'Which channels sell the most, and at what average value?':'¿Qué canales venden más y cuál es el ticket promedio?',cards:cards([en?'Sales':'Ventas',demoMoney(total),en?'Across the selected channels':'De los canales seleccionados'],[en?'Transactions':'Tickets',demoNumber(count),en?'Sales transactions':'Operaciones de venta'],[en?'Average ticket':'Ticket promedio',demoMoney(total/count),en?'Sales / transactions':'Ventas / tickets']),chartTitle:en?'Sales by channel':'Ventas por canal',labels,values:revenue.map(n=>n/1000),compare:null,series:en?'Sales':'Ventas',unit:en?'Thousand MXN':'Miles de MXN',insight:en?`${labels[best]} accounts for ${demoPercent(revenue[best]/total*100)} of sales. Compare channel mix and average tickets to prioritize commercial actions.`:`${labels[best]} concentra ${demoPercent(revenue[best]/total*100)} de las ventas. Compara la mezcla de canales y sus tickets para priorizar acciones comerciales.`,headers:[en?'Channel':'Canal',en?'Sales':'Ventas',en?'Tickets':'Tickets',en?'Avg. ticket':'Ticket prom.'],rows:labels.map((m,i)=>[m,demoMoney(revenue[i]),demoNumber(tickets[i]),demoMoney(revenue[i]/tickets[i])])};
  }
- const onTime=DEMO.deliveries[end],total=DEMO.totals[end],rate=onTime/total*100,late=total-onTime,missing=Math.max(0,Math.ceil(total*.95)-onTime);
- return {label:en?'On-time deliveries':'Entregas a tiempo',value:pct(rate),note:en?`${onTime} of ${total} deliveries`:`${onTime} de ${total} entregas`,secondLabel:en?'Late deliveries':'Entregas tardías',secondValue:String(late),secondNote:en?'On-time target: 95%':'Meta de puntualidad: 95%',values:DEMO.deliveries.slice(0,end+1).map((v,i)=>v/DEMO.totals[i]*100),labels,max:100,unit:en?'% on time':'% a tiempo',targets:labels.map(()=>95),status:rate>=95?(en?'Target reached':'Meta alcanzada'):(en?'Below target':'Bajo la meta'),tone:rate>=95?'positive':'attention',insight:rate>=95?(en?`On-time performance exceeds 95%. Review the ${late} delays to sustain the result.`:`La puntualidad supera el 95%. Revisa los ${late} retrasos para sostener el resultado.`):(en?`${missing} more on-time deliveries were needed to reach 95%. Review the causes of the ${late} delays.`:`Se necesitaban ${missing} entregas puntuales más para llegar al 95%. Revisa las causas de los ${late} retrasos.`),headers:[en?'Month':'Mes',en?'On time / total':'Puntuales / total',en?'On time':'Puntualidad'],rows:labels.map((m,i)=>[m,`${DEMO.deliveries[i]} / ${DEMO.totals[i]}`,pct(DEMO.deliveries[i]/DEMO.totals[i]*100)])};
+ if(key==='inventory'){
+  const labels=en?['Electronics','Home','Consumables','Accessories']:['Electrónica','Hogar','Consumo','Accesorios'];
+  const stock=categories(SAMPLE.stock),minimum=labels.map((_,i)=>sum(branches.map(b=>SAMPLE.minimum[b][i]))),low=stock.map((v,i)=>v<minimum[i]),value=sum(stock.map((v,i)=>v*SAMPLE.cost[i]));
+  return {title:en?'Inventory':'Inventario',question:en?'What is available, and what needs replenishing?':'¿Qué hay disponible y qué necesita reposición?',cards:cards([en?'Units available':'Unidades disponibles',demoNumber(sum(stock)),en?'Across four product lines':'En cuatro líneas de producto'],[en?'Below minimum':'Bajo el mínimo',String(low.filter(Boolean).length)+(en?' lines':' líneas'),en?'Product lines to replenish':'Líneas por reponer'],[en?'Stock value':'Valor del inventario',demoMoney(value),en?'At sample unit costs':'A costos unitarios de ejemplo']),chartTitle:en?'Available stock vs. minimum':'Existencias frente al mínimo',labels,values:stock,compare:minimum,series:en?'Available':'Existencias',compareLabel:en?'Minimum':'Mínimo',unit:en?'Units':'Unidades',insight:low.some(Boolean)?(en?`${labels.filter((_,i)=>low[i]).join(' and ')} are below minimum. Prioritize replenishment before accepting new orders.`:`${labels.filter((_,i)=>low[i]).join(' y ')} están bajo el mínimo. Prioriza su reposición antes de comprometer nuevos pedidos.`):(en?'All product lines meet the sample minimum. Review turnover before scheduling the next purchase.':'Todas las líneas cubren el mínimo de ejemplo. Revisa su rotación antes de programar la siguiente compra.'),headers:[en?'Product line':'Línea',en?'Stock':'Existencias',en?'Minimum':'Mínimo',en?'Status':'Estado'],rows:labels.map((m,i)=>[m,demoNumber(stock[i]),demoNumber(minimum[i]),low[i]?(en?'Replenish':'Reponer'):(en?'Available':'Disponible')])};
+ }
+ const labels=en?['Operations','Sales','Admin','Technology']:['Operación','Ventas','Administración','Tecnología'];
+ const people=categories(SAMPLE.people),vacancies=categories(SAMPLE.vacancies),total=sum(people),expected=total*22,absences=monthly(SAMPLE.absence,period),attendance=(expected-absences)/expected*100,biggest=vacancies.indexOf(Math.max(...vacancies));
+ return {title:en?'People':'Personal',question:en?'How is the team distributed, and where are people needed?':'¿Cómo se distribuye el equipo y dónde falta personal?',cards:cards([en?'Employees':'Colaboradores',String(total),en?'Active headcount':'Plantilla activa'],[en?'Attendance':'Asistencia',demoPercent(attendance),en?'Recorded / scheduled workdays':'Jornadas registradas / programadas'],[en?'Open roles':'Vacantes',String(sum(vacancies)),en?'Positions to fill':'Puestos por cubrir']),chartTitle:en?'Headcount and open roles by area':'Plantilla y vacantes por área',labels,values:people,compare:vacancies,series:en?'Employees':'Colaboradores',compareLabel:en?'Open roles':'Vacantes',unit:en?'People / positions':'Personas / puestos',insight:en?`${labels[biggest]} has ${vacancies[biggest]} open roles. Use team distribution and attendance to plan coverage.`:`${labels[biggest]} tiene ${vacancies[biggest]} vacantes. Usa la distribución del equipo y la asistencia para planear la cobertura.`,headers:[en?'Area':'Área',en?'Employees':'Colaboradores',en?'Open roles':'Vacantes'],rows:labels.map((m,i)=>[m,String(people[i]),String(vacancies[i])])};
 }
-function drawDemo(key){
- activeDemo=key;const end=Number($('demo-period').value),d=demoData(key,end);
- for(const[id,value]of Object.entries({'metric-label':d.label,'metric-value':d.value,'metric-note':d.note,'second-label':d.secondLabel,'second-value':d.secondValue,'second-note':d.secondNote,'demo-insight':d.insight,'demo-status':d.status}))$(id).textContent=value;
- $('demo-cutoff').textContent=end===6?(en?'OCT 23 · IN PROGRESS':'23 OCT · MES EN CURSO'):(months[end].toUpperCase()+' 2026 · '+(en?'COMPLETE':'CERRADO'));$('demo-status').dataset.tone=d.tone;$('demo-target-legend').hidden=!d.targets;
- document.querySelectorAll('[data-demo]').forEach(b=>{const active=b.dataset.demo===key;b.setAttribute('aria-selected',String(active));b.tabIndex=active?0:-1;});
+let activeArea='finance';
+function drawArea(key){
+ activeArea=key;
+ const period=Number($('demo-period').value),branch=$('demo-branch').value,d=areaData(key,period,branch);
+ document.querySelectorAll('[data-area]').forEach(b=>{const active=b.dataset.area===key;b.setAttribute('aria-selected',String(active));b.tabIndex=active?0:-1;});
  $('demo-panel').setAttribute('aria-labelledby','tab-'+key);
- const width=Math.max(230,$('demo-chart').clientWidth),height=174,left=34,right=8,top=25,bottom=140,w=width-left-right,slot=w/d.values.length,y=v=>bottom-v/d.max*(bottom-top);
- const lines=[0,.5,1].map(f=>`<line x1="${left}" y1="${y(f*d.max)}" x2="${width-right}" y2="${y(f*d.max)}" stroke="#293c50"/><text x="${left-7}" y="${y(f*d.max)+4}" text-anchor="end" fill="#a8bacd" font-size="11">${f*d.max}</text>`).join('');
- const bars=d.values.map((v,i)=>{const barW=slot*.48,x=left+i*slot+(slot-barW)/2;return `<rect x="${x}" y="${y(v)}" width="${barW}" height="${bottom-y(v)}" rx="3" fill="${i===d.values.length-1?'#54e6c1':'#467284'}"><title>${d.labels[i]}: ${v.toFixed(v%1?1:0)} ${d.unit}</title></rect><text x="${x+barW/2}" y="${y(v)-6}" fill="#d4e6ef" text-anchor="middle" font-size="11">${v.toFixed(v%1?1:0)}</text><text x="${x+barW/2}" y="161" fill="#a8bacd" text-anchor="middle" font-size="11">${d.labels[i]}</text>`;}).join('');
- const targetLine=d.targets?`<polyline points="${d.targets.map((v,i)=>`${left+slot*(i+.5)},${y(v)}`).join(' ')}" fill="none" stroke="#f4c77c" stroke-width="2" stroke-dasharray="5 4"/>`:'';
- const desc=d.labels.map((m,i)=>`${m}: ${d.values[i].toFixed(d.values[i]%1?1:0)} ${d.unit}${d.targets?`; ${en?'target':'meta'}: ${d.targets[i]}`:''}`).join('. ');
- $('demo-chart').innerHTML=`<svg viewBox="0 0 ${width} ${height}" role="img" aria-labelledby="demo-chart-title demo-chart-desc"><title id="demo-chart-title">${d.label} · ${months[end]} 2026</title><desc id="demo-chart-desc">${desc}</desc><text x="${left}" y="11" fill="#a8bacd" font-size="10">${d.unit}</text>${lines}${bars}${targetLine}</svg>`;
+ $('demo-question').textContent=d.question;$('demo-insight').textContent=d.insight;$('demo-chart-heading').textContent=d.chartTitle;
+ d.cards.forEach((card,i)=>{for(const field of ['label','value','note'])$('demo-'+field+'-'+i).textContent=card[field];});
+ $('demo-series').textContent=d.series;$('demo-compare-label').textContent=d.compareLabel||'';$('demo-compare-label').hidden=!d.compare;
+ const maximum=Math.max(...d.values,...(d.compare||[]));const magnitude=10**Math.floor(Math.log10(maximum||1));const max=Math.ceil(maximum/magnitude)*magnitude;
+ const width=Math.max(230,$('demo-chart').clientWidth),height=180,left=34,right=8,top=25,bottom=142,slot=(width-left-right)/d.labels.length,y=v=>bottom-v/max*(bottom-top);
+ const grid=[0,.5,1].map(f=>`<line x1="${left}" y1="${y(f*max)}" x2="${width-right}" y2="${y(f*max)}" stroke="#293c50"/><text x="${left-7}" y="${y(f*max)+4}" text-anchor="end" fill="#a8bacd" font-size="10">${demoNumber(f*max)}</text>`).join('');
+ const bars=d.values.map((v,i)=>{
+  const group=slot*.62,bw=d.compare?group*.42:group*.65,center=left+slot*(i+.5),x=d.compare?center-group/2:center-bw/2;
+  const bar=(val,bx,color,series)=>`<rect x="${bx}" y="${y(val)}" width="${bw}" height="${bottom-y(val)}" rx="3" fill="${color}"><title>${d.labels[i]} · ${series}: ${demoNumber(val)} ${d.unit}</title></rect><text x="${bx+bw/2}" y="${y(val)-5}" text-anchor="middle" fill="#d4e6ef" font-size="10">${demoNumber(val)}</text>`;
+  return bar(v,x,'#54e6c1',d.series)+(d.compare?bar(d.compare[i],center+group*.08,'#d9ad69',d.compareLabel):'')+`<text x="${center}" y="164" text-anchor="middle" fill="#a8bacd" font-size="${width<340?8:10}">${d.labels[i]}</text>`;
+ }).join('');
+ const description=d.labels.map((m,i)=>`${m}: ${d.series} ${demoNumber(d.values[i])}${d.compare?', '+d.compareLabel+' '+demoNumber(d.compare[i]):''} ${d.unit}`).join('. ');
+ $('demo-chart').innerHTML=`<svg viewBox="0 0 ${width} ${height}" role="img" aria-labelledby="demo-chart-title demo-chart-desc"><title id="demo-chart-title">${d.chartTitle}</title><desc id="demo-chart-desc">${description}</desc><text x="${left}" y="11" fill="#a8bacd" font-size="10">${d.unit}</text>${grid}${bars}</svg>`;
  const row=(cells,heading=false)=>{const tr=document.createElement('tr');cells.forEach(t=>{const td=document.createElement(heading?'th':'td');td.textContent=t;if(heading)td.scope='col';tr.append(td);});return tr;};
  $('demo-table-head').replaceChildren(row(d.headers,true));$('demo-table-body').replaceChildren(...d.rows.map(r=>row(r)));
- $('demo-table-caption').textContent=(en?'Sample data through ':'Datos de ejemplo hasta ')+months[end]+' 2026'+(end===6?(en?' · *October through day 23; prior months complete.':' · *Octubre al día 23; meses anteriores completos.'):'');
+ const branchName=$('demo-branch').selectedOptions[0].textContent;
+ $('demo-table-caption').textContent=d.title+' · '+demoMonths[period]+' 2026 · '+branchName;
 }
-document.querySelectorAll('[data-demo]').forEach((b,i,all)=>{b.addEventListener('click',()=>drawDemo(b.dataset.demo));b.addEventListener('keydown',e=>{let n=i;if(e.key==='ArrowRight')n=(i+1)%all.length;else if(e.key==='ArrowLeft')n=(i+all.length-1)%all.length;else if(e.key==='Home')n=0;else if(e.key==='End')n=all.length-1;else return;e.preventDefault();all[n].focus();drawDemo(all[n].dataset.demo);});});
-$('demo-period').addEventListener('change',()=>drawDemo(activeDemo));
-drawDemo(activeDemo);
-if(typeof ResizeObserver!=='undefined')new ResizeObserver(()=>drawDemo(activeDemo)).observe($('demo-chart'));
+document.querySelectorAll('[data-area]').forEach((b,i,all)=>{b.addEventListener('click',()=>drawArea(b.dataset.area));b.addEventListener('keydown',e=>{let n=i;if(e.key==='ArrowRight')n=(i+1)%all.length;else if(e.key==='ArrowLeft')n=(i+all.length-1)%all.length;else if(e.key==='Home')n=0;else if(e.key==='End')n=all.length-1;else return;e.preventDefault();all[n].focus();drawArea(all[n].dataset.area);});});
+for(const id of ['demo-period','demo-branch'])$(id).addEventListener('change',()=>drawArea(activeArea));
+drawArea(activeArea);
+if(typeof ResizeObserver!=='undefined')new ResizeObserver(()=>drawArea(activeArea)).observe($('demo-chart'));
 }
+
 const CONTACT_EMAIL='contacto@lzsul.com';
 const CONTACT_WHATSAPP_NUMBER='13392351840';
 function buildWhatsappUrl(message){return 'https://wa.me/'+CONTACT_WHATSAPP_NUMBER+'?text='+encodeURIComponent(message);}
